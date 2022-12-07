@@ -1,17 +1,16 @@
 /*  This will return the value entered by the user 
 	 into that form element -- with given id. */
 function formValue(id) {
-  // ???
   let formElement = document.getElementById(id);
 
-  // ???
+
   if (formElement === null) {
     return `[${id} NOT FOUND]`;
   }
 
   let value = formElement.value;
 
-  // ???
+ 
   if (formElement.value.trim() === "") {
     return `[${formElement.placeholder}]`;
   }
