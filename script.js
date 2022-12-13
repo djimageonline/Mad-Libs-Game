@@ -1,49 +1,51 @@
 /*  This will return the value entered by the user 
 	 into that form element -- with given id. */
+
 function formValue(id) {
   let formElement = document.getElementById(id);
 
+  function formValue(id) {
+    let formElement = document.getElementById(id);
 
-  if (formElement === null) {
-    return `[${id} NOT FOUND]`;
+    if (formElement === null) {
+      return `[${id} NOT FOUND]`;
+    }
+    let value = formElement.value;
+    if (formElement.value.trim() === "") {
+      return `[${formElement.placeholder}]`;
+    }
+
+    return document.getElementById(id).value;
   }
 
-  let value = formElement.value;
-
- 
-  if (formElement.value.trim() === "") {
-    return `[${formElement.placeholder}]`;
-  }
-
-  return document.getElementById(id).value;
-}
-
-/* Given the 'id' of an HTML element and a 
+  /* Given the 'id' of an HTML element and a 
          'className', this will add that class to
          the HTML element. */
-function addClassToElement(id, className) {
-  let element = document.getElementById(id);
-  element.classList.add(className);
-}
 
-/* The code here will be executed each time
+  function addClassToElement(id, className) {
+    let element = document.getElementById(id);
+    element.classList.add(className);
+  }
+
+  /* This gets executed each time
          that the form button is clicked. */
-function generate() {
-  console.log("button clicked.");
 
-  // Retreive form values
-  let relative = formValue("relative");
-  let adjective1 = formValue("adjective-1");
-  let adjective2 = formValue("adjective-2");
-  let adjective3 = formValue("adjective-3");
-  let famousPerson = formValue("famous-person");
-  let noun = formValue("noun");
-  let dessert = formValue("dessert");
-  let petName = formValue("pet-name");
+  function generate() {
+    console.log("button clicked.");
 
-  // Insert form values into madlib
+    // Retreive form values
+    let relative = formValue("relative");
+    let adjective1 = formValue("adjective-1");
+    let adjective2 = formValue("adjective-2");
+    let adjective3 = formValue("adjective-3");
+    let famousPerson = formValue("famous-person");
+    let noun = formValue("noun");
+    let dessert = formValue("dessert");
+    let petName = formValue("pet-name");
 
-  let madLib = `
+    // Insert form values into madlib
+
+    let madLib = `
         Dear ${relative},
         <br><br>
         I have been having a really ${adjective1} time 
@@ -56,8 +58,9 @@ function generate() {
         ${petName}
         `;
 
-  // Output mdalib to player
+    // Output mdalib to player
 
-  document.getElementById("output").innerHTML = madLib;
-  addClassToElement("container", "generated");
+    document.getElementById("output").innerHTML = madLib;
+    addClassToElement("container", "generated");
+  }
 }
